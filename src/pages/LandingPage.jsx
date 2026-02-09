@@ -66,9 +66,13 @@ function LandingPage() {
                                 <Play size={20} />
                                 Demo ko'rish
                             </Link>
-                            <a href="#solution" className="btn btn-secondary btn-large">
-                                Batafsil
-                                <ArrowRight size={20} />
+                            <a
+                                href="https://github.com/Jaxongir-Qarshiboyev/Dastyor_AI_Landing_Page/releases/download/v1.0.0-beta/Dastyor-AI-v1.0.0-beta.apk"
+                                className="btn btn-secondary btn-large"
+                                download
+                            >
+                                <Download size={20} />
+                                APK Yuklab Olish
                             </a>
                         </div>
                     </motion.div>
