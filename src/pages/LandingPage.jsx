@@ -1050,7 +1050,7 @@ function LandingPage() {
                                 <div className="timeline-content">
                                     <h3>Idea & Research</h3>
                                     <p>G'oya shakllantirish, texnik tadqiqot, MFCC/DTW prototip</p>
-                                    <span className="timeline-date">2025-yil Yanvar</span>
+                                    <span className="timeline-date">2025-yil Oktyabr</span>
                                 </div>
                             </div>
 
@@ -1061,7 +1061,7 @@ function LandingPage() {
                                 <div className="timeline-content">
                                     <h3>Prototype</h3>
                                     <p>MFCC extraction, oddiy DTW matching, 3 buyruq</p>
-                                    <span className="timeline-date">2025-yil Fevral</span>
+                                    <span className="timeline-date">2025-yil Dekabr</span>
                                 </div>
                             </div>
 
