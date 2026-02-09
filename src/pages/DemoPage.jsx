@@ -70,7 +70,7 @@ function DemoPage() {
                                 <Play size={20} />
                                 YouTube'da Ko'rish
                             </a>
-                            <a href="#" className="btn btn-secondary">
+                            <a href="https://github.com/Jaxongir-Qarshiboyev/Dastyor_AI_Landing_Page/releases/download/v1.0.0-beta/Dastyor-AI-v1.0.0-beta.apk" className="btn btn-secondary" download>
                                 <Download size={20} />
                                 APK Yuklab Olish
                             </a>
@@ -207,11 +207,11 @@ function DemoPage() {
                                 </div>
 
                                 <div className="prototype-actions">
-                                    <a href="#" className="btn btn-primary">
+                                    <a href="https://github.com/Jaxongir-Qarshiboyev/Dastyor_AI_Landing_Page/releases/download/v1.0.0-beta/Dastyor-AI-v1.0.0-beta.apk" className="btn btn-primary" download>
                                         <Download size={20} />
                                         APK Yuklab Olish
                                     </a>
-                                    <a href="https://github.com" target="_blank" rel="noopener" className="btn btn-secondary">
+                                    <a href="https://github.com/Jaxongir-Qarshiboyev" target="_blank" rel="noopener" className="btn btn-secondary">
                                         <ExternalLink size={20} />
                                         GitHub
                                     </a>

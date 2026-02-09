@@ -787,7 +787,7 @@ function LandingPage() {
                                     <span>Git, Docker</span>
                                 </div>
                                 <div className="team-links">
-                                    <a href="https://github.com" target="_blank" rel="noopener">
+                                    <a href="https://github.com/Jaxongir-Qarshiboyev" target="_blank" rel="noopener">
                                         <Github size={20} />
                                     </a>
                                     <a href="https://linkedin.com" target="_blank" rel="noopener">
@@ -1078,7 +1078,7 @@ function LandingPage() {
                         <div className="footer-links">
                             <h4>Resurslar</h4>
                             <Link to="/demo">Demo</Link>
-                            <a href="#">APK Yuklab olish</a>
+                            <a href="https://github.com/Jaxongir-Qarshiboyev/Dastyor_AI_Landing_Page/releases/download/v1.0.0-beta/Dastyor-AI-v1.0.0-beta.apk">APK Yuklab olish</a>
                             <a href="#">Dokumentatsiya</a>
                             <a href="mailto:qarshiboyev.jahongir.22.05@gmail.com?subject=Dastyor AI haqida&body=Salom! Men Dastyor AI haqida quyidagi savolim bor:%0A%0A">Bog'lanish</a>
                         </div>
