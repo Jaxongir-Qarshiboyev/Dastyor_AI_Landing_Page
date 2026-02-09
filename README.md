@@ -10,7 +10,7 @@
 [![Vite](https://img.shields.io/badge/Vite-5.0-646cff?logo=vite)](https://vitejs.dev/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-[Demo Ko'rish](https://dastyor-ai.vercel.app) • [Bog'lanish](mailto:qarshiboyev.jahongir.22.05@gmail.com)
+[Demo Ko'rish](https://dastyorai.vercel.app) • [APK Yuklab Olish](https://github.com/Jaxongir-Qarshiboyev/Dastyor_AI_Landing_Page/releases/download/v1.0.0-beta/Dastyor-AI-v1.0.0-beta.apk) • [Bog'lanish](mailto:qarshiboyev.jahongir.22.05@gmail.com)
 
 </div>
 
@@ -45,10 +45,10 @@
 
 ```bash
 # Repositoryni klonlash
-git clone https://github.com/Jaxongir-Qarshiboyev/dastyor-ai-landing.git
+git clone https://github.com/Jaxongir-Qarshiboyev/Dastyor_AI_Landing_Page.git
 
 # Papkaga o'tish
-cd dastyor-ai-landing
+cd Dastyor_AI_Landing_Page
 
 # Dependencylarni o'rnatish
 npm install
@@ -117,7 +117,7 @@ dastyor-ai-landing/
 ## 📞 Bog'lanish
 
 - 📧 Email: [qarshiboyev.jahongir.22.05@gmail.com](mailto:qarshiboyev.jahongir.22.05@gmail.com)
-- 🌐 Website: [dastyor-ai.vercel.app](https://dastyor-ai.vercel.app)
+- 🌐 Website: [dastyorai.vercel.app](https://dastyorai.vercel.app)
 - 🐙 GitHub: [@Jaxongir-Qarshiboyev](https://github.com/Jaxongir-Qarshiboyev)
 
 ## 📄 Litsenziya
