@@ -505,4 +505,456 @@
     .video-actions {
         flex-direction: column;
     }
+
+    .demo-header {
+        padding-top: 100px;
+    }
+
+    .demo-header h1 {
+        font-size: 2rem;
+    }
+
+    .prototype-info h3 {
+        font-size: 1.3rem;
+    }
+
+    .prototype-stats {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .prototype-actions {
+        flex-direction: column;
+    }
+
+    .demo-cta .cta-content {
+        padding: 30px 20px;
+    }
+}
+
+/* ===== NEW PHONE ANIMATION STYLES ===== */
+
+/* App Logo in Header */
+.app-logo-icon {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+}
+
+/* Waveform Active State */
+.app-demo-waveform.active .demo-wave-bar {
+    animation: demoWave 1s ease-in-out infinite;
+}
+
+.app-demo-waveform:not(.active) .demo-wave-bar {
+    animation: none;
+    height: 10px;
+    opacity: 0.5;
+}
+
+/* Status Text Phases */
+.status-text.listening {
+    color: var(--primary-blue);
+}
+
+.status-text.recognized {
+    color: var(--primary-purple);
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.status-text.executing {
+    color: #ffd700;
+}
+
+.status-text.completed {
+    color: #10b981;
+    font-weight: 600;
+}
+
+/* Incoming Call Overlay */
+.incoming-call-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    border-radius: 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    z-index: 50;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.caller-avatar {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--primary-purple) 0%, var(--primary-blue) 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(155, 93, 229, 0.4);
+    }
+
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 20px 10px rgba(155, 93, 229, 0);
+    }
+}
+
+.caller-name {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.call-status {
+    font-size: 0.9rem;
+    color: var(--primary-blue);
+    animation: blink 1.5s ease-in-out infinite;
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.call-actions {
+    display: flex;
+    gap: 40px;
+    margin-top: 20px;
+}
+
+.call-btn {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.call-btn.decline {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    color: white;
+    animation: shake 0.5s ease-in-out infinite;
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(-10deg);
+    }
+
+    75% {
+        transform: rotate(10deg);
+    }
+}
+
+.call-btn.accept {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+}
+
+/* Visual Feedback Area */
+.visual-feedback {
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+/* Light Visualization */
+.light-visual {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.5s ease;
+}
+
+.light-visual svg {
+    color: #6b7280;
+    transition: all 0.5s ease;
+}
+
+.light-visual.on svg {
+    color: #fbbf24;
+    filter: drop-shadow(0 0 20px #fbbf24);
+    animation: glow 1s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        filter: drop-shadow(0 0 10px #fbbf24);
+    }
+
+    to {
+        filter: drop-shadow(0 0 30px #fbbf24);
+    }
+}
+
+.light-visual span {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.light-visual.on span {
+    color: #fbbf24;
+}
+
+/* Volume Visualization */
+.volume-visual {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 0 20px;
+}
+
+.volume-visual svg {
+    color: var(--primary-blue);
+}
+
+.volume-bar-container {
+    flex: 1;
+    height: 8px;
+    background: rgba(155, 93, 229, 0.2);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.volume-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-purple) 0%, var(--primary-blue) 100%);
+    border-radius: 4px;
+    transition: width 0.5s ease;
+}
+
+.volume-visual span {
+    min-width: 40px;
+    text-align: right;
+    font-size: 0.9rem;
+    color: var(--primary-blue);
+}
+
+/* Vertical Volume Visualization */
+.volume-visual-vertical {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 10px;
+}
+
+.volume-icon-wrapper {
+    color: var(--primary-blue);
+}
+
+.volume-bar-vertical {
+    width: 40px;
+    height: 100px;
+    background: rgba(155, 93, 229, 0.2);
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+}
+
+.volume-bar-fill-vertical {
+    width: 100%;
+    background: linear-gradient(180deg, var(--primary-blue) 0%, var(--primary-purple) 100%);
+    border-radius: 20px;
+    transition: height 0.5s ease;
+}
+
+.volume-percent {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--primary-blue);
+}
+
+/* Call Status Text */
+.call-status-text {
+    font-size: 0.9rem;
+    color: var(--primary-blue);
+    animation: blink 1.5s ease-in-out infinite;
+}
+
+/* Thin Volume Indicator - Right Corner */
+.volume-indicator-right {
+    position: absolute;
+    right: 12px;
+    top: 40%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.volume-indicator-right.visible {
+    opacity: 1;
+}
+
+.volume-bar-thin {
+    width: 6px;
+    height: 120px;
+    background: rgba(155, 93, 229, 0.3);
+    border-radius: 3px;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+}
+
+.volume-bar-thin-fill {
+    width: 100%;
+    background: linear-gradient(180deg, var(--primary-blue) 0%, var(--primary-purple) 100%);
+    border-radius: 3px;
+    transition: height 0.5s ease;
+    box-shadow: 0 0 8px rgba(0, 212, 255, 0.5);
+}
+
+.volume-percent-small {
+    font-size: 0.7rem;
+    color: var(--primary-blue);
+    font-weight: 500;
+}
+
+/* Call Rejected Visualization */
+.call-rejected-visual {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 24px;
+    background: rgba(239, 68, 68, 0.15);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    border-radius: 12px;
+    animation: fadeIn 0.3s ease;
+}
+
+.call-rejected-visual svg {
+    color: #ef4444;
+}
+
+.call-rejected-visual span {
+    color: #ef4444;
+    font-weight: 500;
+}
+
+/* Phone Frame Light On Effect */
+.phone-frame.light-on {
+    box-shadow:
+        0 60px 100px rgba(0, 0, 0, 0.5),
+        0 0 60px rgba(251, 191, 36, 0.3),
+        inset 0 0 30px rgba(251, 191, 36, 0.1);
+}
+
+/* Improved Demo Command Cards */
+.demo-command {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    background: rgba(155, 93, 229, 0.08);
+    border: 1px solid rgba(155, 93, 229, 0.15);
+    border-radius: 10px;
+    margin-bottom: 8px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    transition: all 0.3s ease;
+}
+
+.demo-command.active {
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.15) 0%, rgba(155, 93, 229, 0.15) 100%);
+    border-color: var(--primary-blue);
+    color: var(--text-primary);
+    transform: scale(1.02);
+    box-shadow: 0 4px 15px rgba(0, 212, 255, 0.2);
+}
+
+/* Additional Mobile Responsiveness */
+@media (max-width: 480px) {
+    .phone-frame {
+        width: 240px;
+        height: 420px;
+    }
+
+    .app-demo-header {
+        font-size: 0.9rem;
+    }
+
+    .app-logo-icon {
+        width: 24px;
+        height: 24px;
+    }
+
+    .caller-avatar {
+        width: 60px;
+        height: 60px;
+    }
+
+    .caller-name {
+        font-size: 1.1rem;
+    }
+
+    .call-btn {
+        width: 48px;
+        height: 48px;
+    }
+
+    .demo-command {
+        padding: 8px 12px;
+        font-size: 0.75rem;
+    }
+
+    .status-text {
+        font-size: 0.85rem;
+    }
+
+    .status-text.recognized {
+        font-size: 0.95rem;
+    }
 }

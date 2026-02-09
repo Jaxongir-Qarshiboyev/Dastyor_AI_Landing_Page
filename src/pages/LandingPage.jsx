@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import {
@@ -5,11 +6,170 @@ import {
     CheckCircle2, ArrowRight, Globe, Target, PieChart, Users,
     Star, Rocket, Clock, Cpu, Code2, Lightbulb, Layers,
     DollarSign, Award, TrendingUp, Download, Github, Linkedin,
-    Smartphone, Lock, Timer, Database, Activity, Mail
+    Smartphone, Lock, Timer, Database, Activity, Mail, VolumeX,
+    Phone, PhoneOff, User
 } from 'lucide-react'
 import Navbar from '../components/Navbar'
 import ChatBot from '../components/ChatBot'
 import './LandingPage.css'
+
+// Command scenarios for hero animation - same as Demo
+const heroCommands = [
+    { id: 'light', command: 'Chiroqni yoq', icon: '💡', confidence: 92, visualType: 'light' },
+    { id: 'volume_down', command: 'Ovozni pasaytir', icon: '🔉', confidence: 94, visualType: 'volume_down' },
+    { id: 'volume_up', command: 'Ovozni ko\'tar', icon: '🔊', confidence: 89, visualType: 'volume_up' },
+    { id: 'call', command: 'Qo\'ng\'iroqni o\'chir', icon: '📞', confidence: 96, visualType: 'call', callerName: 'Bobur Tog\'am' }
+]
+
+// Full PhoneAnimationDemo Component for Hero
+function HeroPhoneAnimation() {
+    const [currentScenario, setCurrentScenario] = useState(0)
+    const [phase, setPhase] = useState('listening')
+    const [volumeLevel, setVolumeLevel] = useState(50)
+    const [lightOn, setLightOn] = useState(false)
+    const [callActive, setCallActive] = useState(false)
+    const [showCommand, setShowCommand] = useState(false)
+
+    const scenario = heroCommands[currentScenario]
+
+    useEffect(() => {
+        let timeouts = []
+
+        // Reset states for new scenario
+        setPhase('listening')
+        setShowCommand(false)
+        setLightOn(false)
+        setVolumeLevel(50)
+
+        // For call scenario, show incoming call during listening
+        if (scenario.visualType === 'call') {
+            setCallActive(true)
+        } else {
+            setCallActive(false)
+        }
+
+        // Phase 1: Listening (2.5s)
+        timeouts.push(setTimeout(() => {
+            setPhase('recognized')
+            setShowCommand(true)
+        }, 2500))
+
+        timeouts.push(setTimeout(() => {
+            setPhase('executing')
+            if (scenario.visualType === 'light') setLightOn(true)
+            else if (scenario.visualType === 'volume_up') setVolumeLevel(80)
+            else if (scenario.visualType === 'volume_down') setVolumeLevel(20)
+            else if (scenario.visualType === 'call') setCallActive(false)
+        }, 4000))
+
+        timeouts.push(setTimeout(() => {
+            setPhase('completed')
+        }, 5500))
+
+        timeouts.push(setTimeout(() => {
+            setCurrentScenario((prev) => (prev + 1) % heroCommands.length)
+        }, 8000))
+
+        return () => timeouts.forEach(t => clearTimeout(t))
+    }, [currentScenario, scenario.visualType])
+
+    return (
+        <div className="hero-prototype-phone">
+            <div className={`hero-phone-frame ${lightOn ? 'light-on' : ''}`}>
+                <div className="hero-phone-notch"></div>
+                <div className="hero-phone-content">
+                    {/* App Header */}
+                    <div className="hero-app-header">
+                        <img src="/logo.png" alt="Dastyor AI" className="hero-app-logo" />
+                        <span>Dastyor AI</span>
+                    </div>
+
+                    {/* Incoming Call Overlay */}
+                    {scenario.visualType === 'call' && callActive && (
+                        <div className="hero-call-overlay">
+                            <div className="hero-caller-avatar">
+                                <User size={40} />
+                            </div>
+                            <div className="hero-caller-name">{scenario.callerName}</div>
+                            <div className="hero-call-status">Kiruvchi qo'ng'iroq...</div>
+                            <div className="hero-call-actions">
+                                <div className="hero-call-btn decline">
+                                    <PhoneOff size={24} />
+                                </div>
+                                <div className="hero-call-btn accept">
+                                    <Phone size={24} />
+                                </div>
+                            </div>
+                        </div>
+                    )}
+
+                    {/* Waveform */}
+                    <div className={`hero-waveform ${phase === 'listening' ? 'active' : ''}`}>
+                        {[...Array(15)].map((_, i) => (
+                            <div
+                                key={i}
+                                className="hero-wave-bar"
+                                style={{ animationDelay: `${i * 0.08}s` }}
+                            />
+                        ))}
+                    </div>
+
+                    {/* Status Display */}
+                    <div className="hero-status-display">
+                        <span className={`hero-status-text ${phase}`}>
+                            {phase === 'listening' && 'Tinglayapman...'}
+                            {phase === 'recognized' && `"${scenario.command}"`}
+                            {phase === 'executing' && 'Bajarilmoqda...'}
+                            {phase === 'completed' && 'Bajarildi ✓'}
+                        </span>
+                        {phase !== 'listening' && (
+                            <span className="hero-confidence">Ishonch: {scenario.confidence}%</span>
+                        )}
+                    </div>
+
+                    {/* Visual Feedback Area */}
+                    <div className="hero-visual-feedback">
+                        {scenario.visualType === 'light' && phase !== 'listening' && (
+                            <div className={`hero-light-visual ${lightOn ? 'on' : ''}`}>
+                                <Lightbulb size={48} />
+                                <span>{lightOn ? 'Yoqilgan' : 'O\'chirilgan'}</span>
+                            </div>
+                        )}
+                        {scenario.visualType === 'call' && !callActive && (phase === 'executing' || phase === 'completed') && (
+                            <div className="hero-call-rejected">
+                                <PhoneOff size={32} />
+                                <span>Qo'ng'iroq rad etildi</span>
+                            </div>
+                        )}
+                    </div>
+
+                    {/* Volume Bar - Right Side */}
+                    {(scenario.visualType === 'volume_up' || scenario.visualType === 'volume_down') && (
+                        <div className={`hero-volume-bar ${phase !== 'listening' ? 'visible' : ''}`}>
+                            <div className="hero-volume-track">
+                                <div className="hero-volume-fill" style={{ height: `${volumeLevel}%` }} />
+                            </div>
+                            <span className="hero-volume-percent">{volumeLevel}%</span>
+                        </div>
+                    )}
+
+                    {/* Command Cards */}
+                    <div className="hero-command-cards">
+                        {heroCommands.map((cmd, idx) => (
+                            <div
+                                key={cmd.id}
+                                className={`hero-command-card ${showCommand && idx === currentScenario ? 'active' : ''}`}
+                            >
+                                <span>{cmd.icon}</span>
+                                <span>{cmd.command}</span>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
+}
 
 function LandingPage() {
 
@@ -79,30 +239,7 @@ function LandingPage() {
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.8, delay: 0.2 }}
                     >
-                        <div className="phone-mockup">
-                            <div className="phone-screen">
-                                <div className="app-header">
-                                    <img src="/logo.png" alt="Dastyor AI" className="app-logo" />
-                                    <span>Dastyor AI</span>
-                                </div>
-                                <div className="waveform">
-                                    {[...Array(20)].map((_, i) => (
-                                        <div
-                                            key={i}
-                                            className="wave-bar"
-                                            style={{
-                                                height: `${20 + Math.random() * 60}%`,
-                                                animationDelay: `${i * 0.05}s`
-                                            }}
-                                        />
-                                    ))}
-                                </div>
-                                <div className="command-display">
-                                    <span className="command-text">"Chiroqni yoq"</span>
-                                    <span className="command-status">✓ Buyruq bajarildi</span>
-                                </div>
-                            </div>
-                        </div>
+                        <HeroPhoneAnimation />
                     </motion.div>
                 </div>
             </section>
