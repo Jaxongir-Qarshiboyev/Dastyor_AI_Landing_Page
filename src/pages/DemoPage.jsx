@@ -272,7 +272,7 @@ function DemoPage() {
                     >
                         <div className="video-container">
                             <iframe
-                                src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                                src="https://www.youtube.com/embed/3BlhqEzNb7w"
                                 title="Dastyor AI - Demo Video"
                                 frameBorder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -281,7 +281,7 @@ function DemoPage() {
                         </div>
 
                         <div className="video-actions">
-                            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
+                            <a href="https://youtu.be/3BlhqEzNb7w" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
                                 <Play size={20} />
                                 YouTube'da Ko'rish
                             </a>
